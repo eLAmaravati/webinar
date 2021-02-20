@@ -1,0 +1,279 @@
+/*-----------------------------------------------------------------------------------
+
+Website Name: Webinar
+Template URI: https://webinar.netlify.app/
+Description: Ini adalah web demo untuk latihan front-end developer dan membuat navigasi responsif.
+Author: Langit Amaravati
+Author URI: https://www.langitamaravati.com
+Version: 1.0
+Design & illustration: Freepik/Pikisuperstar
+Designer URI: https://www.freepik.com/pikisuperstar
+
+-----------------------------------------------------------------------------------*/
+// Variabel
+$primaryColor: #f79429;
+$secondaryColor: #42c6a3;
+$textColor: #1a1a1a;
+
+
+/* Global CSS */
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+
+body {
+	background-color: #fff;
+}
+
+.selector-for-some-widget {
+	box-sizing: content-box;
+}
+
+/* Button */
+@mixin webinarBtn {
+	margin-top: 1em;
+	padding: 0.5em 2em;
+	font-size: 1.4rem;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	font-weight: 500;
+	transition: .7s ease;
+}
+
+
+.primary-button {
+	@include webinarBtn();
+
+	background-color: $primaryColor;
+	border: 2px solid $primaryColor;
+	color: #fff;
+
+	&:hover {
+		background-color: #fff;
+		color: $primaryColor !important;
+		border: 2px solid $primaryColor;
+	}
+}
+
+.get-started-btn {
+	@include webinarBtn();
+
+	background-color: $primaryColor;
+	color: #fff;
+	border: 2px solid $primaryColor;
+
+	&:hover {
+		color: $primaryColor;
+		background-color: #fff;
+	}
+}
+
+
+/* Navbar Section */
+.navbar {
+	padding: 2em;
+	background-color: #fff;
+}
+
+.navbar-brand {
+	font-size: 1.7rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: $primaryColor !important;
+
+	span {
+		font-size: 1.7rem;
+		font-weight: 700;
+		letter-spacing: 2px;
+		color: $secondaryColor !important;
+	}
+}
+
+
+.navbar-nav {
+	.nav-link {
+		margin: 0 1em;
+		font-size: 1.4rem;
+		font-weight: 500;
+		color: $textColor;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		transition: 0.3s color ease;
+
+		&:hover {
+			color: $primaryColor !important;
+		}
+
+		&.active {
+			color: $primaryColor !important;
+			font-weight: 600;
+		}
+	}
+}
+
+
+// Mobile Menu
+.navbar {
+	.navbar-toggler {
+		position: relative;
+		display: flex;
+		height: 24px;
+		flex-direction: column;
+		border: none;
+		color: transparent;
+		justify-content: space-between;
+
+		&:focus {
+			outline: none !important;
+		}
+
+		input {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			opacity: 0;
+			z-index: 2;
+			cursor: pointer;
+		}
+
+		span {
+			display: block;
+			width: 28px;
+			height: 3px;
+			background-color: #fff;
+			border-radius: 3px;
+			transition: .5s all;
+		}
+	}
+}
+
+
+
+/* Hero Header Section */
+.hero-section {
+	padding-top: 100px;
+
+	.site-title {
+		font-size: 7rem;
+		font-weight: 700;
+		color: $primaryColor;
+		line-height: 1.1em;
+	}
+
+	.site-title span {
+		color: $secondaryColor;
+		font-size: 7rem;
+		line-height: 1.1em;
+		font-weight: 700;
+	}
+
+	p {
+		margin-top: 1em;
+		font-size: 1.6rem;
+		font-weight: 400;
+		color: $textColor;
+		line-height: 1.5em;
+	}
+}
+
+
+
+/* ----------------
+* Responsive
+----------------- */
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+	/* Hero */
+	.hero-section {
+		margin-bottom: 5vw;
+	}
+
+	.hero-text {
+		text-align: center;
+		order: 2;
+	}
+
+	.hero-image {
+		order: 1;
+	}
+
+	// Navbar Brand
+	.navbar {
+		.navbar-brand {
+			display: none;
+		}
+	}
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (min-width: 768px) {
+
+	/* Header */
+	.hero-image img {
+		max-height: 550px;
+		width: auto;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+	/* Hero */
+	.hero-section {
+		margin: 5vw 0 5vw;
+	}
+
+	.hero-text {
+		text-align: center;
+		order: 2;
+	}
+
+	.hero-image {
+		order: 1;
+	}
+
+	// Navbar Brand
+	.navbar {
+		.navbar-brand {
+			display: none;
+		}
+	}
+
+	/* Navbar */
+	.navbar {
+		background-color: $primaryColor;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	}
+
+
+	.get-started-btn {
+		box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	.nav-link {
+		padding-top: 20px;
+	}
+
+
+	.offcanvas-collapse {
+		position: fixed;
+		top: 64px;
+		/* Height of navbar */
+		bottom: 0;
+		right: 100%;
+		width: 100%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+		overflow-y: auto;
+		visibility: hidden;
+		background-color: rgba(255, 255, 255, .95);
+		transition: transform .7s ease-in-out, visibility .7s ease-in-out;
+	}
+
+	.offcanvas-collapse.open {
+		visibility: visible;
+		transform: translateX(100%);
+	}
+}
